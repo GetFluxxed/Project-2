@@ -1,4 +1,5 @@
 // create an instance of express routers
+const { render } = require('ejs')
 const express = require('express')
 const db = require('../models')
 const router = express.Router()
@@ -7,7 +8,9 @@ const router = express.Router()
 
 // GET /user/new -- serves a form to create a new user
 router.get('/new', function (req, res) {
-    res.render('users/new.ejs')
+    res.render('users/new.ejs', {
+        user: res.locals.user
+    })
 })
 // POST /users -- creates a new user from the form @ /users/new
 router.post('/', async function (req, res) {
@@ -36,7 +39,8 @@ router.post('/', async function (req, res) {
 // GET /users/login -- render a login from that POSTs to /users/login
 router.get('/login', function (req, res) {
     res.render('users/login.ejs', {
-        message: req.query.message ? req.query.message : null
+        message: req.query.message ? req.query.message : null,
+        user: res.locals.user
     })
 })
 // POST /users/login -- ingest data from form rendered @ GET /users/login
@@ -59,7 +63,7 @@ router.post('/login', async function (req, res) {
         } else {
             // if the user is found and their password matches log them in
             res.cookie('userId', user.id)
-            res.redirect('/')
+            res.redirect('/users/profile')
         }
     } catch (error) {
         console.log(error)
@@ -70,6 +74,17 @@ router.get('/logout', function (req, res) {
     res.clearCookie('userId')
     // make a get req
     res.redirect('/')
+})
+
+// GET /profile -- show the user their profile page
+router.get('/profile', function (req, res) {
+    if (!res.locals.user) {
+        res.redirect('/users/login?message=You must authenticate before you are authorizzed to view this resource!')
+    } else {
+        res.render('users/profile.ejs', {
+            user: res.locals.user
+        })
+    }
 })
 // export the router
 module.exports = router
