@@ -15,7 +15,7 @@ Cloudinary API Spec's: 500 Admin API requests per hour
 ![Pitch ERD](/ERD.png)
 
 # RESTful Routing
-![RESTful Routing]()
+![RESTful Routing](/RESTful.png)
 
 # Wireframes
 ![Pitch Wireframe]()
