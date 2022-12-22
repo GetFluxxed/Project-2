@@ -21,8 +21,11 @@ app.use(cookieParser())
 app.use(async (req, res, next) => {
     try {
         if (req.cookies.userId) {
+            // decrypt the user id and turn it into a string
+            const decryptedId = crypto.AES.decrypt(req.cookies.userId, process.env.SECRET)
+            const decryptedString = decryptedId.toString(crypto.enc.Utf8)
             // the user is logged in, lets find them in the db 
-            const user = await db.user.findByPk(req.cookies.userId)
+            const user = await db.user.findByPk(decryptedString)
             // mount the logged in user on the res.locals
             res.locals.user = user
         } else {
@@ -32,6 +35,7 @@ app.use(async (req, res, next) => {
         next()
     } catch (error) {
         console.log('AYER')
+        next()
     }
 })
 
