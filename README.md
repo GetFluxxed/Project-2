@@ -12,4 +12,13 @@ Cloudinary API Spec's: 500 Admin API requests per hour
                      : Unlimited Uploads per hour
 
 # ERD's
-![Pitch ERD](./pitch.drawio)
+![Pitch ERD]()
+
+# Wireframes
+![Pitch Wireframe]()
+
+# MVP Goals
+MVP for this website would be, safe user creation and obfusication of personal info. Capability to store user information in a database away from the users eye. Ability to upload pictures, store pictures, comment on pictures, and interaction with other users.
+
+# Stretch Goals
+Some major stretch goals would be a friends list for the users. The ability to have a private messaging system from one user to another. Make the layout of the website intuitive and create a nice user experience. Continuous improvements and functionality are generally what's on the horizon.
