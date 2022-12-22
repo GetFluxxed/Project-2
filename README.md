@@ -17,6 +17,10 @@ Cloudinary API Spec's: 500 Admin API requests per hour
 # Wireframes
 ![Pitch Wireframe]()
 
+
+# CRUD
+Utilizing a series of CRUD and RESTful routing procedures to create, read, update, and delete users posts, comments, and profiles.
+
 # MVP Goals
 MVP for this website would be, safe user creation and obfusication of personal info. Capability to store user information in a database away from the users eye. Ability to upload pictures, store pictures, comment on pictures, and interaction with other users.
 
