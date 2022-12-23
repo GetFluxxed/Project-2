@@ -16,19 +16,19 @@ Cloudinary API Spec's:
 For this project the following languages, frameworks, and libraries will be used:
 - JavaScript
   - Express.js
-   - Cookie-Parser
-   - Dotenv
-   - EJS
+  - Cookie-Parser
+  - Dotenv
+  - EJS
 
 - Databasing
  - Sequelize
-  - Pg
+ - Pg
 
 - HTML and CSS
-  - Bulma or Tailwind 
+ - Bulma or Tailwind 
 - Cyber Security
-  - Bcrypt
-  - Crypto-js
+ - Bcrypt
+ - Crypto-js
 
 # ERD's
 ![Pitch ERD](/Img/ERD.png)
@@ -47,7 +47,6 @@ MVP for this website would be:
 - Capability to store user information in a database away from the users eye.
   - all necessary info should be storable, such as email and password, and additional data such as full name and birthdate.
 - Ability to upload, store, and comment on pictures posted by you or other users.
-  - 
 
 # Stretch Goals
 Some major stretch goals in mind would be:
