@@ -4,7 +4,7 @@ The idea for my project two is something along the lines of a online picture for
 # User Stories
 As a User, I would like to be able to share pictures of my loved ones, animals or moments in time with other people on the internet.
 As a User, I would like to be able to create an account and manage my posts.
-As a User, I would like to be able to see other users posts, as well as being able to comment and interact with them.
+As a User, I would like to be able to see other users posts, as well as being able to comment and interact with them.  
 
 # What is the Cloudinary API
 The Cloudinary API is an incredibly powerful media api, allowing you to store, transform, optimize and deliver all of your medias, wherever you like! It is extremely scalable, with the potential to support millions of product images and videos, contains a full family of other API's that offer flexibility, power, and agility when creating our stack.
@@ -12,13 +12,13 @@ Cloudinary API Spec's: 500 Admin API requests per hour
                      : Unlimited Uploads per hour
 
 # ERD's
-![Pitch ERD](/ERD.png)
+![Pitch ERD](/Img/ERD.png)
 
 # RESTful Routing
-![RESTful Routing](/RESTful.png)
+![RESTful Routing](/Img/RESTful.png)
 
 # Wireframes
-![Pitch Wireframe](/Wireframe.png)
+![Pitch Wireframe](/Img/Wireframe.png)
 
 
 # MVP Goals
