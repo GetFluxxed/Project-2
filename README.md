@@ -20,13 +20,13 @@ For this project the following languages, frameworks, and libraries will be used
   - Dotenv
   - EJS
 - Databasing
- - Sequelize
- - Pg
+  -Sequelize
+  - Pg
 - HTML and CSS
- - Bulma or Tailwind 
+  - Bulma or Tailwind 
 - Cyber Security
- - Bcrypt
- - Crypto-js
+  - Bcrypt
+  - Crypto-js
 
 # ERD's
 ![Pitch ERD](/Img/ERD.png)
