@@ -20,7 +20,7 @@ For this project the following languages, frameworks, and libraries will be used
   - Dotenv
   - EJS
 - Databasing
-  -Sequelize
+  - Sequelize
   - Pg
 - HTML and CSS
   - Bulma or Tailwind 
