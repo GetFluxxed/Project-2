@@ -57,3 +57,11 @@ Some major stretch goals in mind would be:
 - Continuous functionality improvements:
   - Email verification
   - A more user friendly post creation and comment creation system/streamlining processes.
+
+
+
+
+
+
+  sequelize model:create --name post --attributes content:text,userId:integer,caption:text
+  sequelize model:create --name comment --attributes content:text,userId:integer,postId:integer

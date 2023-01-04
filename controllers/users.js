@@ -5,6 +5,8 @@ const db = require('../models')
 const router = express.Router()
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
+const multer = require('multer')
+const upload = multer({ dest: './uploads/' })
 
 // mount our routes on the router
 
@@ -105,5 +107,33 @@ router.get('/profile', function (req, res) {
         })
     }
 })
+
+// POST /posts/new -- create a new post from the users tab
+router.post('/posts/new', upload.single('myFile'), function (req, res) {
+    res.send(req.file)
+})
+
+
+// GET /users/posts  --check your posts
+router.get('/posts', function (req, res) {
+    res.render('posts.ejs')
+})
+
+
+// POST /users/posts/new --make a new post
+
+
+// PUT /users --Update bio
+
+// GET /users/comments --Check your comments
+
+// DELETE /users/posts --Delete a post
+
+// DELETE /user/posts --Delete a comment
+
+// DELETE /user --Delete user account
+
+
+
 // export the router
 module.exports = router
