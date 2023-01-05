@@ -5,6 +5,10 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
+const cloudinary = require('cloudinary')
+const multer = require('multer')
+const upload = multer({ dest: './uploads/' })
+
 
 
 // app config
@@ -59,7 +63,7 @@ app.get('/', function (req, res) {
 })
 
 app.use('/users', require('./controllers/users'))
-
+app.use('/posts', require('./controllers/posts'))
 // \listen on port
 app.listen(PORT, function () {
     console.log('HANDS IN THE AYERRRRRRRRRR')

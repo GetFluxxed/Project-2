@@ -1,4 +1,7 @@
 'use strict';
+
+const { sequelize } = require('../models');
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -8,6 +11,12 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
+      },
+      title: {
+        type: Sequelize.TEXT
+      },
+      visibility: {
+        type: Sequelize.BOOLEAN
       },
       content: {
         type: Sequelize.TEXT

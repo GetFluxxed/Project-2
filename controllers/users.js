@@ -5,8 +5,16 @@ const db = require('../models')
 const router = express.Router()
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
+const cloudinary = require('cloudinary').v2
 const multer = require('multer')
-const upload = multer({ dest: './uploads/' })
+const upload = multer({ dest: 'uploads/' })
+
+// Configure Cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+})
 
 // mount our routes on the router
 
@@ -22,9 +30,11 @@ router.post('/', async function (req, res) {
         // based on the info in the req.body, we need to check to see if a user exists in the database -- find or create a user
         const [newUser, created] = await db.user.findOrCreate({
             where: {
-                email: req.body.email
+                email: req.body.email,
+                user_name: req.body.user_name
             }
         })
+        console.log(req.body.user_name)
         // if user is found, redirect to login
         if (!created) {
             console.log('A user with this email already exists!')
@@ -126,6 +136,9 @@ router.get('/posts', function (req, res) {
 // PUT /users --Update bio
 
 // GET /users/comments --Check your comments
+router.get('/comments', function (req, res) {
+    res.render('comments.ejs')
+})
 
 // DELETE /users/posts --Delete a post
 
