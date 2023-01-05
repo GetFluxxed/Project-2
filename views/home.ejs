@@ -1,6 +1,11 @@
 <%- include('./partials/header.ejs', {user}) %>
 
-    <h2> Welcome Home, User</h2>
+    <% if(user) {%>
+        <h2> Welcome Home, <%= user.user_name %>!
+        </h2>
+        <% } else { %>
+            <h2>Welcome! Please Login or Sign Up If You Don't Have an Account</h2>
+            <% } %>
 
 
-    <%- include('./partials/footer.ejs') %>
+                <%- include('./partials/footer.ejs') %>

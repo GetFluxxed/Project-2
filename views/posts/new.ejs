@@ -1,11 +1,16 @@
 <%- include('../partials/header.ejs') %>
-    <form action="/posts/new" method="post" enctype="multipart/form-data">
+    <form action="/posts/new" method="POST" enctype="multipart/form-data">
         <label for="title">Title:</label><br>
         <input type="text" id="title" name="title"><br>
+
         <label for="caption">Caption Your Post:</label><br>
         <textarea id="caption" name="caption"></textarea><br>
+
         <label for="image">Image:</label><br>
         <input type="file" id="image" name="image"><br><br>
+
+        <label for="visibility">Make Post Public:</label>
+        <input type="checkbox" id="visibility" name="visibility" value="true"><br><br>
         <input type="submit" value="Submit">
     </form>
     <%- include('../partials/footer.ejs')%>

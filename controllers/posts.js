@@ -17,7 +17,7 @@ router.get('/', function (req, res) {
 
 // GET /posts/new --show form for creation of new post
 router.get('/new', function (req, res) {
-    res.render('new.ejs')
+    res.render('posts/new.ejs')
 })
 
 // POST /posts/new --creation of post in browser
@@ -25,10 +25,10 @@ router.post('/new', upload.single('image'), async function (req, res) {
     // Get the data from the form submission
     const title = req.body.title
     const caption = req.body.caption
-    const visibility = req.body.visibility
+    const visibility = req.body.visibility === 'true'
 
     // Get the logged-in user's ID
-    const userId = req.user.id
+    const userId = res.locals.user
 
     // Upload the image to Cloudinary
     try {
@@ -38,15 +38,15 @@ router.post('/new', upload.single('image'), async function (req, res) {
         // Save the data to the database
         const newPost = new Post({
             title: title,
+            visibility: visibility,
             content: imageUrl,
             user: userId,
             caption: caption,
-            visibility: visibility,
         });
         await newPost.save()
         res.redirect('/posts')
     } catch (err) {
-        res.render('error', { error: err })
+        res.status('error', { error: err }).send
     }
 })
 
