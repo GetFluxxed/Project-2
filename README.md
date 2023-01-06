@@ -1,4 +1,4 @@
-# Welcome to Pollen
+# Welcome to Pollen ![Brand Logo](/Img/pollen-logo.png)
 Pollen is an online picture sharing platform where you can share your photos and see what all the buzz is about with your friends. The name Pollen was inspired by how bees of all types share pollen with their environments to spread natures love. Through Pollen, you have an open forum with all users around the world, or you can use Pollen for your own little collection or vault of pictures.
 
 ## Project 2
