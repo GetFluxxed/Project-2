@@ -1,5 +1,9 @@
-# Project 2
-The idea for my project two is something along the lines of a online picture forum, or something along those lines utilizing the cloudinary api, pushing myself to go above and beyond in creating a user involved space, where individuals can create and post their own content, as well as view other posts from users with the capability of commenting and interacting. 
+# Welcome to Pollen
+Pollen is an online picture sharing platform where you can share your photos and see what all the buzz is about with your friends. The name Pollen was inspired by how bees of all types share pollen with their environments to spread natures love. Through Pollen, you have an open forum with all users around the world, or you can use Pollen for your own little collection or vault of pictures.
+
+## Project 2
+The idea for my project two is something along the lines of a online picture forum, or something utilizing the Cloudinary API, pushing myself to go above and beyond in creating a user involved space, where individuals can create and post their own content, as well as view other posts from users with the capability of commenting and interacting. 
+
 
 # User Stories
 * As a User, I would like to be able to share pictures of my loved ones, animals or moments in time with other people on the internet.
@@ -21,13 +25,16 @@ For this project the following languages, frameworks, and libraries will be used
   - EJS
 - Databasing
   - Sequelize
+  - PostgreSQL
   - Pg
 - HTML and CSS
-  - Bulma or Tailwind 
+  - Bulma
 - Cyber Security
   - Bcrypt
   - Crypto-js
-
+- Cloudinary API
+  - Multer
+  - Cloudinary
 # ERD's
 ![Pitch ERD](/Img/ERD.png)
 
@@ -57,11 +64,3 @@ Some major stretch goals in mind would be:
 - Continuous functionality improvements:
   - Email verification
   - A more user friendly post creation and comment creation system/streamlining processes.
-
-
-
-
-
-
-  sequelize model:create --name post --attributes content:text,userId:integer,caption:text
-  sequelize model:create --name comment --attributes content:text,userId:integer,postId:integer
