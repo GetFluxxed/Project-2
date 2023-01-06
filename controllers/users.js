@@ -31,14 +31,15 @@ router.post('/', async function (req, res) {
         const [newUser, created] = await db.user.findOrCreate({
             where: {
                 email: req.body.email,
+            },
+            where: {
                 user_name: req.body.user_name
             }
         })
-        console.log(req.body.user_name)
         // if user is found, redirect to login
         if (!created) {
-            console.log('A user with this email already exists!')
-            res.redirect('/users/login?nessage=Please log in to continue.')
+            console.log('A user with this email or username already exists!')
+            res.redirect('/users/new?message=Please log in to continue.')
         } else {
             // here we know it's a new user
             // hash the supplied password

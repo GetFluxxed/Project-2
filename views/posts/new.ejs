@@ -1,16 +1,29 @@
 <%- include('../partials/header.ejs') %>
-    <form action="/posts/new" method="POST" enctype="multipart/form-data">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title"><br>
-
-        <label for="caption">Caption Your Post:</label><br>
-        <textarea id="caption" name="caption"></textarea><br>
-
-        <label for="image">Image:</label><br>
-        <input type="file" id="image" name="image"><br><br>
-
-        <label for="visibility">Make Post Public:</label>
-        <input type="checkbox" id="visibility" name="visibility" value="true"><br><br>
-        <input type="submit" value="Submit">
+    <form action="/posts/new" method="post" class="container">
+        <div class="field">
+            <label for="title" class="label">Title Your Post:</label>
+            <div class="control">
+                <input type="text" id="title" name="title" class="input">
+            </div>
+        </div>
+        <div class="field">
+            <label for="caption" class="label">Caption Your Post:</label>
+            <div class="control">
+                <textarea id="caption" name="caption" class="textarea"></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <label for="visibility" class="checkbox">
+                    <input type="checkbox" id="visibility" name="visibility" value="true">
+                    Make Your Post Public?
+                </label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input type="submit" value="Submit" class="button is-primary">
+            </div>
+        </div>
     </form>
     <%- include('../partials/footer.ejs')%>

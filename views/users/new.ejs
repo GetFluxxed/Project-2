@@ -1,15 +1,75 @@
 <%- include('../partials/header.ejs') %>
-    <h3> Sign up for an account</h3>
+
+    <div class="field">
+        <div class="control is-centered">
+            <h3> Sign up for an account</h3>
+        </div>
+    </div>
 
     <form method="POST" action="/users">
-        <label for="user_name">Choose a Username:</label>
-        <input type="user_name" name="user_name" id="user_name" required>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
+        <div class="field">
+            <label class="label" for="user_name">User Name</label>
+            <div class="control has-icons-left">
+                <input class="input is-small is-rounded is-warning" type="text" name="user_name" id="user_name"
+                    placeholder="Username..." required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+            </div>
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <button type="submit"> Sign Up</button>
+        <div class="field">
+            <div class="field">
+                <label class="label"> Name</label>
+            </div>
+            <div class="field">
+                <div class="field">
+                    <p class="control is-expanded has-icons-left">
+                        <input class="input is-small is-rounded is-warning" type="text"
+                            placeholder="First Name (optional)">
+                        <span class="icon is-small is-left">
+                            <i class="far fa-address-card"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control is-expanded has-icons-left">
+                        <input class="input is-small is-rounded is-warning" type="text"
+                            placeholder="Last Name (optional)">
+                        <span class="icon is-small is-left">
+                            <i class="far fa-address-card"></i>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label" for="email">Email</label>
+            <div class="control has-icons-left">
+                <input class="input is-small is-rounded is-warning" type="email" name="email" id="email"
+                    placeholder="Email..." required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label" for="password">Password:</label>
+            <div class="control has-icons-left">
+                <input class="input is-small is-rounded is-warning" type="password" name="password" id="password"
+                    placeholder="Password..." required>
+                <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </div>
+        </div>
+        <div class="field is-grouped is-grouped-centered">
+            <button class="button is-small is-rounded is-warning is-light" type="submit"> Sign Up</button>
+        </div>
     </form>
+
+
     <%- include('../partials/footer.ejs')%>
