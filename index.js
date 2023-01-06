@@ -38,7 +38,7 @@ app.use(async (req, res, next) => {
         }
         next()
     } catch (error) {
-        console.log('AYER')
+        console.log('AYER', error)
         next()
     }
 })
