@@ -1,10 +1,18 @@
 <%- include('./partials/header.ejs', {user}) %>
 
     <% if(user) {%>
-        <h2> Welcome Back to the Hive, <%= user.user_name %>!</h2>
-        <h1>Remember to Bee Positive!</h1>
+        <div class="field">
+            <div class="field is-grouped is-grouped-centered is-grouped-multiline">
+                <h1 class="title is-1"> Welcome Back to the Hive, <%= user.user_name %>!</h1>
+                <h3 class="subtitle is-3">Remember to Bee Positive!</h3>
+            </div>
+        </div>
         <% } else { %>
-            <h2>Welcome to Pollen! Please Login or Sign Up If You Don't Have an Account</h2>
+            <div class="field">
+                <div class="field is-grouped is-grouped-centered is-grouped-multiline">
+                    <h2>Welcome to Pollen! Please Login or Sign Up If You Don't Have an Account</h2>
+                </div>
+            </div>
             <% } %>
 
 

@@ -1,5 +1,9 @@
 <%- include('../partials/header', {user}) %>
-    <h1>Here is your profile, <%= user.user_name %>.</h1>
+    <div class="field">
+        <div class="field is-grouped is-grouped-centered">
+            <p class="title is-2">Here is your profile, <%= user.user_name %>.</p>
+        </div>
+    </div>
     <h2>About Me: </h2>
 
     <h4>Posts You Are Interested in:</h4>
