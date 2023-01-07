@@ -93,7 +93,7 @@ router.post('/login', async function (req, res) {
             // place the encrypted id in a cookie
             res.cookie('userId', encryptedIdString)
             // redirect to /users/profile
-            res.redirect('/users/profile')
+            res.redirect('/')
             // if the user is found and their password matches log them in
         }
     } catch (error) {
@@ -131,10 +131,7 @@ router.get('/posts', function (req, res) {
 })
 
 
-// POST /users/posts/new --make a new post
-
-
-// PUT /users --Update bio
+// PUT /users/profile --Update bio
 
 // GET /users/comments --Check your comments
 router.get('/comments', function (req, res) {

@@ -3,18 +3,19 @@
         <div class="field">
             <label for="title" class="label">Title Your Post:</label>
             <div class="control">
-                <input type="text" id="title" name="title" class="input">
+                <input class="input is-rounded is-warning" type="text" id="title" name="title" placeholder="Title...">
             </div>
         </div>
         <div class="field">
-            <label for="caption" class="label">Caption Your Post:</label>
+            <label class="label" for="caption">Caption Your Post:</label>
             <div class="control">
-                <textarea id="caption" name="caption" class="textarea"></textarea>
+                <textarea class="textarea is-rounded is-warning" id="caption" name="caption"
+                    placeholder="Caption..."></textarea>
             </div>
         </div>
         <div class="field">
             <div class="control">
-                <label for="visibility" class="checkbox">
+                <label class="checkbox" for="visibility">
                     <input type="checkbox" id="visibility" name="visibility" value="true">
                     Make Your Post Public?
                 </label>
@@ -22,7 +23,8 @@
         </div>
         <div class="field">
             <div class="control">
-                <input type="submit" value="Submit" class="button is-primary">
+                <button class="button is-small is-rounded is-warning is-light" type="submit" value="Submit"
+                    class="button is-primary">Post</button>
             </div>
         </div>
     </form>

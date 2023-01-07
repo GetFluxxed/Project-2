@@ -1,16 +1,35 @@
 <%- include('../partials/header.ejs', {user}) %>
-    <h3> Login to your account</h3>
+    <div class="centered">
+        <h3> Login to your account</h3>
+    </div>
     <% if (message) { %>
         <p>
             <%= message %>
         </p>
         <% } %>
             <form method="POST" action="/users/login">
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" required>
-
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required>
-                <button type="submit">Login</button>
+                <div class="field">
+                    <label class="label" for="email">Email:</label>
+                    <div class="control has-icons-left">
+                        <input class="input is-small is-rounded is-warning" type="email" name="email" id="email"
+                            placeholder="Email..." required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="password">Password:</label>
+                    <div class="control has-icons-left">
+                        <input class="input is-small is-rounded is-warning" type="password" name="password"
+                            id="password" placeholder="Password..." required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field is-grouped is-grouped-centered">
+                    <button class="button is-small is-rounded is-warning is-light" type="submit">Login</button>
+                </div>
             </form>
             <%- include('../partials/footer.ejs')%>

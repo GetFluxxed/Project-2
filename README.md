@@ -35,6 +35,9 @@ For this project the following languages, frameworks, and libraries will be used
 - Cloudinary API
   - Multer
   - Cloudinary
+- DEVOPS
+  - Heroku CLI
+  - Sequelize CLI
 # ERD's
 ![Pitch ERD](/Img/ERD.png)
 
@@ -50,7 +53,7 @@ MVP for this website would be:
 - Safe user creation and obfusication of personal info.
   - User's can create accounts safely without the worry of their information being easily accessible.
 - Capability to store user information in a database away from the users eye.
-  - all necessary info should be storable, such as email and password, and additional data such as full name and birthdate.
+  - all necessary info should be storable, such as email and password, and additional data such as full name.
 - Ability to upload, store, and comment on pictures posted by you or other users.
 
 # Stretch Goals
