@@ -143,7 +143,19 @@ router.get('/comments', function (req, res) {
 // DELETE /user/posts --Delete a comment
 
 // DELETE /user --Delete user account
-
+router.delete('/profile', async function (req, res) {
+    const user = res.locals.user
+    try {
+        const deletedUser = await db.user.destroy({
+            where: {
+                id: user.dataValues.id
+            }
+        })
+        res.redirect('/')
+    } catch (error) {
+        console.error(error)
+    }
+})
 
 
 // export the router

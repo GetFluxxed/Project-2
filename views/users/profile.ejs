@@ -8,4 +8,11 @@
 
     <h4>Posts You Are Interested in:</h4>
     <h5></h5>
+    <div class="field">
+        <div class="field is-grouped is-grouped-centered">
+            <form method="POST" action="/users/profile?_method=delete">
+                <button type="submit" value="delete" id="delete">Delete Account</button>
+            </form>
+        </div>
+    </div>
     <%- include('../partials/footer') %>

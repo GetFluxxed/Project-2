@@ -8,6 +8,8 @@ const crypto = require('crypto-js')
 const cloudinary = require('cloudinary')
 const multer = require('multer')
 const upload = multer({ dest: './uploads/' })
+// const Post = require('./models/post')
+const methodOverride = require('method-override')
 
 
 
@@ -19,6 +21,8 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 // tell express to parse incoming cookies
 app.use(cookieParser())
+// tell express to allow the override methods
+app.use(methodOverride('_method'))
 
 // custom uth middleware that checks the cookies for a user id
 // tell all downstream routes about this user
@@ -55,12 +59,28 @@ app.use((req, res, next) => {
 })
 
 // routes and controllers
-app.get('/', function (req, res) {
+app.get('/', async function (req, res) {
     console.log(res.locals)
+    const posts = await db.post.findAll({
+        order: [['createdAt', 'DESC']]
+    })
     res.render('home.ejs', {
-        user: res.locals.user
+        user: res.locals.user,
+        posts: posts
     })
 })
+
+// router.get('/', async function (req, res) {
+//     try {
+//         // Find all the posts in the database
+//         const posts = await db.post.find().sort({ createdAt: 'desc' }).exec();
+//         // Render the home page and pass the posts to the template
+
+//     } catch (error) {
+//         console.error(error)
+//         res.send(error)
+//     }
+// });
 
 app.use('/users', require('./controllers/users'))
 app.use('/posts', require('./controllers/posts'))

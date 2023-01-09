@@ -1,4 +1,4 @@
-<%- include('./partials/header.ejs', {user}) %>
+<%- include('./partials/header.ejs', {user}, {posts}) %>
 
     <% if(user) {%>
         <div class="field">
@@ -7,13 +7,38 @@
                 <h3 class="subtitle is-3">Remember to Bee Positive!</h3>
             </div>
         </div>
-        <% } else { %>
-            <div class="field">
-                <div class="field is-grouped is-grouped-centered is-grouped-multiline">
-                    <h2>Welcome to Pollen! Please Login or Sign Up If You Don't Have an Account</h2>
+
+        <% for (const post of posts) { %>
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img src="<%= post.content %>" width="250px" height="250px" alt="Post image">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-4">
+                                <%= post.title %>
+                            </p>
+                            <p class="subtitle is-6">
+                                <%= user.username %>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <%= post.caption %>
+                    </div>
                 </div>
             </div>
             <% } %>
+                <% } else { %>
+                    <div class="field">
+                        <div class="field is-grouped is-grouped-centered is-grouped-multiline">
+                            <h2>Welcome to Pollen! Please Login or Sign Up If You Don't Have an Account</h2>
+                        </div>
+                    </div>
+                    <% } %>
 
 
-                <%- include('./partials/footer.ejs') %>
+                        <%- include('./partials/footer.ejs') %>

@@ -14,12 +14,7 @@ cloudinary.config({
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET
 })
-// mount routes on the router
-
-// GET /posts --view all posts
-// router.get('/', function (req, res) {
-//     res.render('browse.ejs')
-// })
+//==! mount routes on the router
 
 // GET /posts/new --show form for creation of new post
 router.get('/new', function (req, res) {
@@ -33,13 +28,14 @@ router.post('/new', upload.single('image'), async function (req, res) {
     const title = req.body.title
     const caption = req.body.caption
     // const visibility = req.body.visibility === 'true'
+
     // Get the logged-in user's ID
     const user = res.locals.user;
     // Upload the image to Cloudinary
     try {
         console.log(req.file.path)
         const result = await cloudinary.uploader.upload(req.file.path)
-        // cloudinary.image(`${req.file.title}`, { width: 70, height: 53, crop: "scale" })
+        cloudinary.image(`${req.file.path}`, { width: 70, height: 53, crop: "scale" })
         const imageUrl = result.secure_url
 
         // Save the data to the database
@@ -52,19 +48,11 @@ router.post('/new', upload.single('image'), async function (req, res) {
                 caption: caption,
             }
         })
-        // if (!created) {
-        //     res.redirect('/posts/new?message=This is a duplicate post')
-        // } else {
-        // await newPost.save()
-        //     console.log(newPost.save())
-        //     res.redirect(req.get('referer'))
-        // }
         res.redirect('/')
     } catch (err) {
         res.status('error', err)
     }
 })
-
 // POST /posts/:id --create a comment on a post
 
 // PUT /posts/edit --edit something about a previous post
