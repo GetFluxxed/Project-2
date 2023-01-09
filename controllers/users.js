@@ -120,9 +120,9 @@ router.get('/profile', function (req, res) {
 })
 
 // POST /posts/new -- create a new post from the users tab
-router.post('/posts/new', upload.single('myFile'), function (req, res) {
-    res.send(req.file)
-})
+// router.post('/posts/new', upload.single('myFile'), function (req, res) {
+//     res.send(req.file)
+// })
 
 
 // GET /users/posts  --check your posts

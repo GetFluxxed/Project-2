@@ -1,22 +1,27 @@
 <%- include('../partials/header.ejs') %>
-    <form action="/posts/new" method="post" class="container">
+    <form action="/posts/new" method="POST" class="container" enctype="multipart/form-data">
         <div class="field">
             <label for="title" class="label">Title Your Post:</label>
             <div class="control">
-                <input class="input is-rounded is-warning" type="text" id="title" name="title" placeholder="Title...">
+                <input class="input is-rounded is-warning" type="text" id="title" name="title" placeholder="Title..."
+                    required>
             </div>
+        </div>
+        <div class="field">
+            <label class="label" for="image">Choose An Image</label>
+            <input class="input is-rounded is-warning is-small" type="file" id="image" name="image" required>
         </div>
         <div class="field">
             <label class="label" for="caption">Caption Your Post:</label>
             <div class="control">
-                <textarea class="textarea is-rounded is-warning" id="caption" name="caption"
-                    placeholder="Caption..."></textarea>
+                <textarea class="textarea is-rounded is-warning" id="caption" name="caption" placeholder="Caption..."
+                    required></textarea>
             </div>
         </div>
         <div class="field">
             <div class="control">
                 <label class="checkbox" for="visibility">
-                    <input type="checkbox" id="visibility" name="visibility" value="true">
+                    <input type="checkbox" id="visibility" name="visibility" value="true" required>
                     Make Your Post Public?
                 </label>
             </div>

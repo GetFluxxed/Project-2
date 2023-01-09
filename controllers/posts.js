@@ -8,12 +8,18 @@ const cloudinary = require('cloudinary').v2
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
+// Configure Cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+})
 // mount routes on the router
 
 // GET /posts --view all posts
-router.get('/', function (req, res) {
-    res.render('browse.ejs')
-})
+// router.get('/', function (req, res) {
+//     res.render('browse.ejs')
+// })
 
 // GET /posts/new --show form for creation of new post
 router.get('/new', function (req, res) {
@@ -23,30 +29,39 @@ router.get('/new', function (req, res) {
 // POST /posts/new --creation of post in browser
 router.post('/new', upload.single('image'), async function (req, res) {
     // Get the data from the form submission
+
     const title = req.body.title
     const caption = req.body.caption
-    const visibility = req.body.visibility === 'true'
-
+    // const visibility = req.body.visibility === 'true'
     // Get the logged-in user's ID
-    const userId = res.locals.user
-
+    const user = res.locals.user;
     // Upload the image to Cloudinary
     try {
+        console.log(req.file.path)
         const result = await cloudinary.uploader.upload(req.file.path)
+        // cloudinary.image(`${req.file.title}`, { width: 70, height: 53, crop: "scale" })
         const imageUrl = result.secure_url
 
         // Save the data to the database
-        const newPost = new Post({
-            title: title,
-            visibility: visibility,
-            content: imageUrl,
-            user: userId,
-            caption: caption,
-        });
-        await newPost.save()
-        res.redirect('/posts')
+        const newPost = await db.post.findOrCreate({
+            where: {
+                title: title,
+                // visibility: visibility,
+                content: imageUrl,
+                userId: user.dataValues.id,
+                caption: caption,
+            }
+        })
+        // if (!created) {
+        //     res.redirect('/posts/new?message=This is a duplicate post')
+        // } else {
+        // await newPost.save()
+        //     console.log(newPost.save())
+        //     res.redirect(req.get('referer'))
+        // }
+        res.redirect('/')
     } catch (err) {
-        res.status('error', { error: err }).send
+        res.status('error', err)
     }
 })
 
