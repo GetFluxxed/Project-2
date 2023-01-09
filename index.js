@@ -62,6 +62,7 @@ app.use((req, res, next) => {
 // routes and controllers
 app.get('/', async function (req, res) {
     console.log(res.locals)
+    const postId = req.params.id
     const posts = await db.post.findAll({
         include: [
             {
@@ -69,14 +70,58 @@ app.get('/', async function (req, res) {
                 as: 'user',
                 attributes: ['id', 'user_name'],
                 required: false,
+            },
+            {
+                model: db.comment,
+                as: 'comments',
+                include: [
+                    {
+                        model: db.user,
+                        as: 'user',
+                        attributes: ['id', 'user_name']
+                    }
+                ]
             }
         ],
-        order: [['createdAt', 'DESC']]
+        order: [['createdAt', 'DESC']],
+    })
+    const post = await db.post.findByPk(postId, {
+        include: [
+            {
+                model: db.user,
+                as: 'user',
+                attributes: ['id', 'user_name']
+            },
+            // {
+            //     model: db.comment,
+            //     as: 'comment',
+            //     include: [
+            //         {
+            //             model: db.user,
+            //             as: 'user',
+            //             attributes: ['id', 'user_name']
+            //         }
+            //     ]
+            // }
+        ]
     })
     res.render('home.ejs', {
         localUser: res.locals.user,
-        posts: posts
+        posts: posts,
+        commentedPost: post
     })
+})
+
+app.post('/', async function (req, res) {
+    const { postId, content } = req.body
+    const user = res.locals.user
+
+    const comment = await db.comment.create({
+        content,
+        userId: user.dataValues.id,
+        postId: parseInt(postId)
+    })
+    res.redirect('/')
 })
 
 // router.get('/', async function (req, res) {

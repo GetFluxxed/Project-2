@@ -53,9 +53,49 @@ router.post('/new', upload.single('image'), async function (req, res) {
         res.status('error', err)
     }
 })
-// POST /posts/:id --create a comment on a post
+// GET /posts/comment --create a comment on a post
+router.get('/', async function (req, res) {
+    res.render('/')
+})
 
-// PUT /posts/edit --edit something about a previous post
+// POST /comments/new post the data from the comment form into the database
+router.post('/', async function (req, res) {
+    const { postId, content } = req.body
+    const userId = req.user.id
+
+    const comment = await db.comment.create({
+        content,
+        userId,
+        postId
+    })
+    res.redirect('/')
+})
+
+// GET the comments associated to posts
+// router.get('/', async function (req, res) {
+//     const postId = req.params.id
+//     const post = await db.post.findById(postId, {
+//         include: [
+//             {
+//                 model: db.user,
+//                 as: 'user',
+//                 attributes: ['user_name']
+//             },
+//             {
+//                 model: db.comment,
+//                 as: 'comment',
+//                 include: [
+//                     {
+//                         model: db.user,
+//                         as: 'user',
+//                         attributes: ['user_name']
+//                     }
+//                 ]
+//             }
+//         ]
+//     })
+//     res.render('posts', { post })
+// })
 
 // export the router
 module.exports = router

@@ -37,8 +37,31 @@
                         Captioned: <%= post.caption %>
                     </div>
                     <div class="field">
-                        <button class="button is-rounded is-warning is-light" type="submit" name="comment"
-                            value="comment" id="comment">~~Leave them a buzz~~</button>
+                        <% if(post.comments) {%>
+                            <% post.comments.forEach(comment=> {%>
+                                <p class="subtitle">
+                                    <%= comment.user.user_name%> said: <%=comment.content%>
+                                </p>
+                                <% })%>
+                                    <%}%>
+                    </div>
+                    <div class="field">
+                        <form action="/" method="POST">
+                            <input type="hidden" name="postId" id="postId" value="<%= post.id %>">
+                            <div class="field">
+                                <label class="label">What's The Buzz?</label>
+                                <div class="field">
+                                    <textarea class="textarea is-rounded is-warning " name="content" placeholder="~~~"
+                                        required></textarea>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="field is-grouped is-grouped-centered">
+                                    <button class="button is-rounded is-warning is-light" type="submit">Buzz
+                                        Em!</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
