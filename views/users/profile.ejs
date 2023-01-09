@@ -6,7 +6,10 @@
     </div>
     <div class="field">
         <div class="field has-text-centered">
-            <ul>About Me:
+            <ul>
+                <strong>
+                    About Me:
+                </strong>
             </ul>
             <li>
                 Name: <%= user.first_name %>
@@ -26,8 +29,15 @@
             </form>
         </div>
     </div>
+    <div class="field">
+        <div class="field has-text-centered">
+            <h4><strong>
+                    Posts You Have Made:
+                </strong>
+            </h4>
 
-    <h4>Posts You Have Made:</h4>
+        </div>
+    </div>
     <% for (const post of posts) { %>
         <div class="card is-small">
             <div class="card-content">

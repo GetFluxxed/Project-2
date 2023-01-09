@@ -156,6 +156,7 @@ router.put('/profile/edit', async function (req, res) {
         const userId = await db.user.findByPk(user.dataValues.id)
 
         await userId.update({
+            user_name: req.body.user_name,
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             bio: req.body.bio
