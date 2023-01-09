@@ -10,6 +10,7 @@ const multer = require('multer')
 const upload = multer({ dest: './uploads/' })
 // const Post = require('./models/post')
 const methodOverride = require('method-override')
+const { user } = require('pg/lib/defaults')
 
 
 
@@ -62,10 +63,18 @@ app.use((req, res, next) => {
 app.get('/', async function (req, res) {
     console.log(res.locals)
     const posts = await db.post.findAll({
+        include: [
+            {
+                model: db.user,
+                as: 'user',
+                attributes: ['id', 'user_name'],
+                required: false,
+            }
+        ],
         order: [['createdAt', 'DESC']]
     })
     res.render('home.ejs', {
-        user: res.locals.user,
+        localUser: res.locals.user,
         posts: posts
     })
 })

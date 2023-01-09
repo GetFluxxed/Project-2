@@ -1,9 +1,9 @@
-<%- include('./partials/header.ejs', {user}, {posts}) %>
+<%- include('./partials/header.ejs', {localUser}, {posts}) %>
 
     <% if(user) {%>
         <div class="field">
             <div class="field is-grouped is-grouped-centered is-grouped-multiline">
-                <h1 class="title is-1"> Welcome Back to the Hive, <%= user.user_name %>!</h1>
+                <h1 class="title is-1"> Welcome Back to the Hive, <%= localUser.user_name %>!</h1>
                 <h3 class="subtitle is-3">Remember to Bee Positive!</h3>
             </div>
         </div>
@@ -14,23 +14,30 @@
                     <div class="media">
                         <div class="media-content">
                             <p class="subtitle is-6">
-                                Posted By: <%= user.user_name %>
+                                <% if (post.user) { %>
+                                    Posted By: <%= post.user.user_name %>
                             </p>
-                            <p class="title is-4">
-                                Titled: <%= post.title %>
-                            </p>
-                            <div class="card-image">
-                                <figure class="image is-4by3 is-160x160">
-                                    <img src="<%= post.content %>" alt="Post image">
-                                </figure>
-                            </div>
+                            <% }%>
+                                <p class="title is-4">
+                                    Titled: <%= post.title %>
+                                </p>
+                                <div class="card-image">
+                                    <figure class="image is-4by3 is-160x160">
+                                        <img src="<%= post.content %>" alt="Post image">
+                                    </figure>
+                                </div>
                         </div>
                     </div>
                     <div class="content">
                         Captioned: <%= post.caption %>
                     </div>
+                    <div class="field">
+                        <button class="button is-rounded is-warning is-light" type="submit" name="comment"
+                            value="comment" id="comment">~~Leave them a buzz~~</button>
+                    </div>
                 </div>
             </div>
+
             <% } %>
                 <% } else { %>
                     <div class="field">
