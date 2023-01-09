@@ -145,7 +145,13 @@ router.get('/comments', function (req, res) {
 // DELETE /user --Delete user account
 router.delete('/profile', async function (req, res) {
     const user = res.locals.user
+
     try {
+        const deletePost = await db.post.destroy({
+            where: {
+                userId: user.dataValues.id
+            }
+        })
         const deletedUser = await db.user.destroy({
             where: {
                 id: user.dataValues.id
