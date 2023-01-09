@@ -9,25 +9,25 @@
         </div>
 
         <% for (const post of posts) { %>
-            <div class="card">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img src="<%= post.content %>" width="250px" height="250px" alt="Post image">
-                    </figure>
-                </div>
+            <div class="card is-small">
                 <div class="card-content">
                     <div class="media">
                         <div class="media-content">
-                            <p class="title is-4">
-                                <%= post.title %>
-                            </p>
                             <p class="subtitle is-6">
-                                <%= user.username %>
+                                Posted By: <%= user.user_name %>
                             </p>
+                            <p class="title is-4">
+                                Titled: <%= post.title %>
+                            </p>
+                            <div class="card-image">
+                                <figure class="image is-4by3 is-160x160">
+                                    <img src="<%= post.content %>" alt="Post image">
+                                </figure>
+                            </div>
                         </div>
                     </div>
                     <div class="content">
-                        <%= post.caption %>
+                        Captioned: <%= post.caption %>
                     </div>
                 </div>
             </div>

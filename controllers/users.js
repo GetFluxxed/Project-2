@@ -30,10 +30,16 @@ router.post('/', async function (req, res) {
         // based on the info in the req.body, we need to check to see if a user exists in the database -- find or create a user
         const [newUser, created] = await db.user.findOrCreate({
             where: {
-                email: req.body.email,
+                email: req.body.email
             },
             where: {
                 user_name: req.body.user_name
+            },
+            where: {
+                email: req.body.email,
+                user_name: req.body.user_name,
+                first_name: req.body.first_name,
+                last_name: req.body.last_name
             }
         })
         // if user is found, redirect to login
@@ -45,7 +51,6 @@ router.post('/', async function (req, res) {
             // hash the supplied password
             const hashedPassword = bcrypt.hashSync(req.body.password, 12)
             newUser.password = hashedPassword
-
             // save the user with the new password
             await newUser.save() // Actually save the new password in the db
             // encrypt the new user's id and convert it to a string
@@ -54,7 +59,7 @@ router.post('/', async function (req, res) {
             // place the encrypted id in a cookie
             res.cookie('userId', encryptedIdString)
             // redirect to /users/profile
-            res.redirect('/users/profile')
+            res.redirect('/')
         }
     } catch (error) {
         console.log(error)
@@ -109,12 +114,18 @@ router.get('/logout', function (req, res) {
 })
 
 // GET /profile -- show the user their profile page
-router.get('/profile', function (req, res) {
+router.get('/profile', async function (req, res) {
     if (!res.locals.user) {
         res.redirect('/users/login?message=You must authenticate before you are authorizzed to view this resource!')
     } else {
+        const myPosts = await db.post.findAll({
+            where: {
+                userId: res.locals.user.dataValues.id
+            }
+        })
         res.render('users/profile.ejs', {
-            user: res.locals.user
+            user: res.locals.user,
+            posts: myPosts
         })
     }
 })
@@ -132,6 +143,12 @@ router.get('/posts', function (req, res) {
 
 
 // PUT /users/profile --Update bio
+router.get('/profile/edit', async function (req, res) {
+    res.render('users/edit.ejs', {
+        user: res.locals.user
+    })
+})
+
 
 // GET /users/comments --Check your comments
 router.get('/comments', function (req, res) {
@@ -152,7 +169,12 @@ router.delete('/profile', async function (req, res) {
                 userId: user.dataValues.id
             }
         })
-        const deletedUser = await db.user.destroy({
+        const deleteComment = await db.comment.destroy({
+            where: {
+                userId: user.dataValues.id
+            }
+        })
+        const deleteUser = await db.user.destroy({
             where: {
                 id: user.dataValues.id
             }

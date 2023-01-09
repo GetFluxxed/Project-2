@@ -1,19 +1,67 @@
-<%- include('../partials/header', {user}) %>
+<%- include('../partials/header', {user}, {posts}) %>
     <div class="field">
         <div class="field is-grouped is-grouped-centered">
             <p class="title is-2">Here is your profile, <%= user.user_name %>.</p>
         </div>
     </div>
-    <h2>About Me: </h2>
-
-    <h4>Posts You Are Interested in:</h4>
-    <h5></h5>
     <div class="field">
+        <div class="field has-text-centered">
+            <ul>About Me:
+            </ul>
+            <li>
+                First Name: <%= user.first_name %>
+
+            </li>
+
+            <li>
+                Last Name:<%= user.last_name %>
+            </li>
+
+            <li>
+                Your Bio: <%=user.bio %>
+            </li>
+            </ul>
+        </div>
         <div class="field is-grouped is-grouped-centered">
-            <form method="POST" action="/users/profile?_method=delete">
-                <button class="button is-small is-warning is-rounded" type="submit" value="delete" id="delete">Delete
-                    Account</button>
+            <form action="/users/profile" method="GET">
+                <button class="button is-rounded is-warning is-light" type="submit" value="update" id="update">Edit
+                    About
+                    You</button>
             </form>
         </div>
     </div>
-    <%- include('../partials/footer') %>
+
+    <h4>Posts You Have Made:</h4>
+    <% for (const post of posts) { %>
+        <div class="card is-small">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">
+                            You Titled It: <%= post.title %>
+                        </p>
+                        <div class="card-image">
+                            <figure class="image is-10x10">
+                                <img src="<%= post.content %>" alt="Post image">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    You Captioned It: <%= post.caption %>
+                </div>
+            </div>
+        </div>
+        <% } %>
+
+
+            <div class="field">
+                <div class="field is-grouped is-grouped-centered">
+                    <form method="POST" action="/users/profile?_method=delete">
+                        <button class="button is-small is-warning is-rounded" type="submit" value="delete"
+                            id="delete">Delete
+                            Account</button>
+                    </form>
+                </div>
+            </div>
+            <%- include('../partials/footer') %>
