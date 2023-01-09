@@ -142,13 +142,41 @@ router.get('/posts', function (req, res) {
 })
 
 
-// PUT /users/profile --Update bio
+// PUT /users/profile --serves form
 router.get('/profile/edit', async function (req, res) {
     res.render('users/edit.ejs', {
         user: res.locals.user
     })
 })
 
+// PUT /users/profile/edit --updates bio
+router.put('/profile/edit', async function (req, res) {
+    try {
+        const user = res.locals.user
+        const first_name = req.body.first_name
+        const last_name = req.body.last_name
+        const bio = req.body.bio
+        console.log(user, first_name, last_name, bio)
+        // const updateUser = await db.user.update({
+        //     where: {
+        //         userId: user.dataValues.id,
+        //     }
+
+        // })
+
+        const userId = await db.user.findByPk(user.dataValues.id)
+        // await user.save()
+        await userId.update({
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            bio: req.body.bio
+
+        })
+        res.redirect('/')
+    } catch (error) {
+        console.error(error)
+    }
+})
 
 // GET /users/comments --Check your comments
 router.get('/comments', function (req, res) {

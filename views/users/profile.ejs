@@ -9,12 +9,8 @@
             <ul>About Me:
             </ul>
             <li>
-                First Name: <%= user.first_name %>
-
-            </li>
-
-            <li>
-                Last Name:<%= user.last_name %>
+                Name: <%= user.first_name %>
+                    <%= user.last_name %>
             </li>
 
             <li>
@@ -23,7 +19,7 @@
             </ul>
         </div>
         <div class="field is-grouped is-grouped-centered">
-            <form action="/users/profile" method="GET">
+            <form action="/users/profile/edit" method="GET">
                 <button class="button is-rounded is-warning is-light" type="submit" value="update" id="update">Edit
                     About
                     You</button>
