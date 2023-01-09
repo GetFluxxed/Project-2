@@ -1,5 +1,15 @@
 # Welcome to Pollen ![Brand Logo](/Img/pollen-logo.png)
-Pollen is an online picture sharing platform where you can share your photos and see what all the buzz is about with your friends. The name Pollen was inspired by how bees of all types share pollen with their environments to spread natures love. Through Pollen, you have an open forum with all users around the world, or you can use Pollen for your own little collection or vault of pictures.
+Pollen is an online picture sharing platform where you can share your photos and see what all the buzz is about with your friends. The name Pollen was inspired by how bees of all types share pollen with their environments to spread natures love. Through Pollen, you have an open forum with all users around the world, or you can use Pollen for your own little collection or vault of pictures. 
+
+### To Visit
+To visit my website, click the visit https://pollen.herokuapp.com/
+
+### To Use
+To make your own version of Pollen, or to add to what I've started, simply clone down my repository, and
+```
+npm i 
+```
+each of the dependencies listed below.
 
 ## Project 2
 The idea for my project two is something along the lines of a online picture forum, or something utilizing the Cloudinary API, pushing myself to go above and beyond in creating a user involved space, where individuals can create and post their own content, as well as view other posts from users with the capability of commenting and interacting. 
@@ -25,8 +35,7 @@ For this project the following languages, frameworks, and libraries will be used
   - EJS
 - Databasing
   - Sequelize
-  - PostgreSQL
-  - Pg
+  - Pg(PostgreSQL)
 - HTML and CSS
   - Bulma
 - Cyber Security
@@ -67,3 +76,16 @@ Some major stretch goals in mind would be:
 - Continuous functionality improvements:
   - Email verification
   - A more user friendly post creation and comment creation system/streamlining processes.
+
+# Post Project Reflection
+This project was an absolute blast. I learned so much more about what I thought I knew a decent amount on, from:
+ - Styling with Bulma being SO MUCH more enjoyable than vanilla CSS
+ to
+ - Complex rendering methods for forms, navbars, and other web items 
+ and
+ - Advanced image storage and retrieval in the cloud, with the ability to handle video's in the future,
+
+
+I had so much fun during this project.
+Some areas I need to work on for sure is tailoring image size, images are currently way too large, and there is no way for you to delete individual posts/comments yet. I am very proud of the way it turned out overall, and I put probably upwards of 40/50 hours of work into it, so I know for the next website I build, I will be able to half that time and become more and more efficient as my time as an engineer progresses.
+
