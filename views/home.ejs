@@ -2,11 +2,16 @@
 
     <% if(user) {%>
         <div class="field">
-            <div class="field is-grouped is-grouped-centered is-grouped-multiline">
+            <div class="field is-grouped is-grouped-centered">
                 <h1 class="title is-1"> Welcome Back to the Hive, <%= localUser.user_name %>!</h1>
+            </div>
+        </div>
+        <div class="field">
+            <div class="field is-grouped is-grouped-centered">
                 <h3 class="subtitle is-3">Remember to Bee Positive!</h3>
             </div>
         </div>
+
 
         <% for (const post of posts) { %>
             <div class="card is-small">
