@@ -5,11 +5,17 @@ Pollen is an online picture sharing platform where you can share your photos and
 To visit my website, click the visit https://pollen.herokuapp.com/
 
 ### To Use
-To make your own version of Pollen, or to add to what I've started, simply clone down my repository, and
-```
-npm i 
-```
-each of the dependencies listed below.
+To make your own version of Pollen, or to add to what I've started:
+1. Clone down my repository.
+2. In terminal, run npm init -y to initialize npm.
+3. Then run npm i to install all required npm packages.
+4. Next run touch .env.
+5. Then run echo node_modules >> .gitignore and echo.env >> .gitignore.
+6. Back in your console, run sequelize db:create and sequelize db:migrate to create a database and migrate the models.
+7. You will now have the database "a_b" in psql.
+8. In your console, type psql and \c a_b to connect to the database.
+9. In a separate console tab, run npx nodemon (or just nodemon if you installed it globally) to start the application.
+10. Go to http://localhost:3000/ in a browser to use the application.
 
 ## Project 2
 The idea for my project two is something along the lines of a online picture forum, or something utilizing the Cloudinary API, pushing myself to go above and beyond in creating a user involved space, where individuals can create and post their own content, as well as view other posts from users with the capability of commenting and interacting. 
